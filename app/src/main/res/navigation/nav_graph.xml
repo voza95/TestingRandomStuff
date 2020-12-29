@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/firstScreenFragment">
+
+    <fragment
+        android:id="@+id/firstScreenFragment"
+        android:name="com.example.testingrandomstuff.fragment.first.FirstScreenFragment"
+        android:label="first_screen_fragment"
+        tools:layout="@layout/first_screen_fragment">
+        <action
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:destination="@id/secondScreenFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <argument
+            android:name="test_sting"
+            android:defaultValue="Hello World"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_firstFragment_to_fourthFragment"
+            app:destination="@id/itemFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondScreenFragment"
+        android:name="com.example.testingrandomstuff.fragment.second.SecondScreenFragment"
+        android:label="second_screen_fragment"
+        tools:layout="@layout/second_screen_fragment" />
+    <fragment
+        android:id="@+id/thirdScreenFragment"
+        android:name="com.example.testingrandomstuff.fragment.third.ThirdScreenFragment"
+        android:label="third_screen_fragment"
+        tools:layout="@layout/third_screen_fragment">
+
+        <action
+            android:id="@+id/action_fourthFragment_to_confirmDialog"
+            app:destination="@id/confirmDialog" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.example.testingrandomstuff.fragment.fourth.ItemFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragment_item_list">
+        <action
+            android:id="@+id/action_fourthFragment_to_thirdFragment"
+            app:destination="@id/thirdScreenFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+
+        <argument
+            android:name="detail_sting"
+            android:defaultValue="Item 1"
+            app:argType="string" />
+
+
+    </fragment>
+
+    <dialog
+        android:id="@+id/confirmDialog"
+        android:name="com.example.testingrandomstuff.fragment.third.ThirdScreenFragment$MyDialog"
+        tools:layout="@layout/confirm_dialog" >
+        <action
+            android:id="@+id/action_confirmDialog_to_thirdScreenFragment"
+            app:destination="@id/thirdScreenFragment"
+            app:popUpTo="@id/thirdScreenFragment"
+            app:popUpToInclusive="true" />
+    </dialog>
+</navigation>
